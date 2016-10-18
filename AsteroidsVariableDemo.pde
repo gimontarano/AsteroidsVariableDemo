@@ -1,9 +1,4 @@
-/* @pjs globalKeyEvents="true"; */
-/**
-Prese 5 to accelerate<br>
-Press 4 or 6 to rotate<br>
-Press 2 for hypserspace
-*/
+
 SpaceShip bob;
 Stars stars;
 boolean isAccelerating = false;
