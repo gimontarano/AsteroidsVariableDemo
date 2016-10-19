@@ -118,13 +118,13 @@ abstract class Floater
     myCenterY += myDirectionY;
 
     //wrap around screen
-    if(myCenterX >width) {
+    if(myCenterX > width) {
       myCenterX = 0;
     }
-    else if (myCenterX<0) {
+    else if (myCenterX < 0) {
       myCenterX = width;
     }
-    if(myCenterY >height) {
+    if(myCenterY > height) {
       myCenterY = 0;
     }
     else if (myCenterY < 0) {
@@ -227,6 +227,71 @@ class SpaceShip extends Floater
     myPointDirection = degrees;
   }
   public double getPointDirection() {
+    return myPointDirection;
+  }
+}
+
+class Bullets extends Floater
+{
+  private int intX;
+  private int intY;
+  Bullets()
+  {
+    corners = 2;
+    xCorners = new int[corners];
+    yCorners = new int[corners];
+    myCenterX = 250;
+    intX = (int)(myCenterX);
+    myCenterY = 250;
+    intY = (int)(myCenterY);
+    myDirectionX = 0;
+    myDirectionY = 0;
+    myPointDirection = 0;
+    xCorners[0] = intX;
+    yCorners[0] = intY;
+    xCorners[1] = intX + (int)(Math.cos(myPointDirection)*5);
+    yCorners[1] = intY + (int)(Math.sin(myPointDirection)*5);
+    myColor = color(255,255,255);
+    
+  }
+  public void setX(int x)
+  {
+    myCenterX = x;
+  }
+  public int getX()
+  {
+    return (int) myCenterX;
+  }
+  public void setY(int y)
+  {
+    myCenterY = y;
+  }
+  public int getY()
+  {
+    return (int) myCenterY;
+  }
+  public void setDirectionX(double x)
+  {
+    myDirectionX = x;
+  }
+  public double getDirectionX()
+  {
+    return myDirectionX;
+  }
+  public void setDirectionY(double y)
+  {
+    myDirectionY = y;
+  }
+  public double getDirectionY()
+  {
+    return myDirectionY;
+  }
+  public void setPointDirection(int degrees)
+  {
+    myPointDirection = degrees;
+  }
+  public double getPointDirection()
+  {
     return myPointDirection;
   }
 }
