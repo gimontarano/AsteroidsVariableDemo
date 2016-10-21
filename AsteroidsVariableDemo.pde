@@ -199,6 +199,8 @@ class SpaceShip extends Floater
     myDirectionX = myDirectionY = 0; //holds x and y coordinates of the vector for direction of travel
     myPointDirection = 0;
   }
+  public void move();
+    
   public void setX(int x) {
     myCenterX = x;
   }
