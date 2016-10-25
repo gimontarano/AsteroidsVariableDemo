@@ -1,5 +1,5 @@
 
-SpaceShip bob;
+Spaceship bob;
 Stars stars;
 boolean isAccelerating = false;
 boolean isRotatingLeft = false;
@@ -10,7 +10,7 @@ int countDown = 60;
 void setup()
 {
   size(500,500);
-  bob = new SpaceShip();
+  bob = new Spaceship();
   stars = new Stars();
   textSize(24);
 }
@@ -182,9 +182,9 @@ abstract class Floater
   }
 }
 
-class SpaceShip extends Floater
+class Spaceship extends Floater
 {
-  public SpaceShip() {
+  public Spaceship() {
     corners = 3;
     xCorners = new int[corners];
     xCorners[0] = 16;
@@ -199,8 +199,6 @@ class SpaceShip extends Floater
     myDirectionX = myDirectionY = 0; //holds x and y coordinates of the vector for direction of travel
     myPointDirection = 0;
   }
-  public void move();
-    
   public void setX(int x) {
     myCenterX = x;
   }
