@@ -31,7 +31,7 @@ void draw()
       isHyperspace = false;
     }
   }
-  if(keyPressed == true && key == '2') 
+  if(keyPressed == true && key == 'h') 
     countDown = 60;
   stars.show();
   bob.show(isHyperspace,countDown,isAccelerating);
@@ -48,10 +48,10 @@ void draw()
 }
 void keyPressed()
 {
-  if(key == '5') isAccelerating = true;
-  if(key == '4') isRotatingLeft = true;
-  if(key == '6') isRotatingRight = true;
-  if(key == '2')
+  if(key == ' ') isAccelerating = true;
+  if(key == 'v') isRotatingLeft = true;
+  if(key == 'n') isRotatingRight = true;
+  if(key == 'h')
   {
     bob.setX((int)(Math.random() * width));
     bob.setY((int)(Math.random() * height));
@@ -64,9 +64,9 @@ void keyPressed()
 }
 void keyReleased()
 {
-  if(key == '5') isAccelerating = false;
-  if(key == '4') isRotatingLeft = false;
-  if(key == '6') isRotatingRight = false;
+  if(key == ' ') isAccelerating = false;
+  if(key == 'v') isRotatingLeft = false;
+  if(key == 'n') isRotatingRight = false;
 }
 abstract class Floater
 {
@@ -231,7 +231,7 @@ class Spaceship extends Floater
   }
 }
 
-class Bullets extends Floater
+/*class Bullets extends Floater
 {
   private int intX;
   private int intY;
@@ -294,7 +294,7 @@ class Bullets extends Floater
   {
     return myPointDirection;
   }
-}
+}*/
 
 class Stars
 {
