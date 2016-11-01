@@ -182,6 +182,50 @@ abstract class Floater
   }
 }
 
+/class Asteroids extends Floater
+{
+  public Asteroids() {
+    protected int[] xCorners;
+    protected int[] yCorners;
+    protected int corners;  //the number of corners, a triangular floater has 3
+    protected int myColor;
+    protected double myCenterX = myCenterY = ; //holds center coordinates
+    myDirectionX = myDirectionY = 0;
+    myPointDirection = 0;
+
+  }
+  public void setX(int x) {
+    myCenterX = x;
+  }
+  public int getX() {
+    return (int)myCenterX;
+  }
+  public void setY(int y) {
+    myCenterY = y;
+  }
+  public int getY() {
+    return (int)myCenterY;
+  }
+  public void setDirectionX(double x) {
+    myDirectionX = x;
+  }
+  public double getDirectionX() {
+    return myDirectionX;
+  }
+  public void setDirectionY(double y) {
+    myDirectionY = y;
+  }
+  public double getDirectionY() {
+    return myDirectionY;
+  }
+  public void setPointDirection(int degrees) {
+    myPointDirection = degrees;
+  }
+  public double getPointDirection() {
+    return myPointDirection;
+  }
+}
+
 class Spaceship extends Floater
 {
   public Spaceship() {
