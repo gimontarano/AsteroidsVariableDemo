@@ -182,17 +182,44 @@ abstract class Floater
   }
 }
 
-/class Asteroids extends Floater
+class Asteroids extends Floater
 {
   public Asteroids() {
-    protected int[] xCorners;
-    protected int[] yCorners;
-    protected int corners;  //the number of corners, a triangular floater has 3
-    protected int myColor;
-    protected double myCenterX = myCenterY = ; //holds center coordinates
+    show();
+    corners = (int)(Math.random()*3) + 10;
+    myColor = color(255);
+    myCenterX = (Math.random()*510) - 5;
+    myCenterY = (Math.random()*510) - 5; 
     myDirectionX = myDirectionY = 0;
     myPointDirection = 0;
 
+  }
+  private void show()
+  {
+    int hits = (int)(Math.random()*4);
+    int sizeFactor = 3 - hits;
+    if (hits == 3)
+    {
+      stroke(0);
+      point(0, 0);
+    }
+
+    if(corners == 10)
+    {
+      xCorners = {-2, -1, 2, 3, 4, 3, 1, -2, -4, -4};
+      yCorners = {-3, -5, -6, -4, -1, 2, 4, 3, 1, -4};
+    }
+    if(corners == 11)
+    {
+      xCorners = {-2, -1, 2, 3, 4, 3, 1, -2, -4, -6, -4};
+      yCorners = {-3, -5, -6, -4, -1, 2, 4, 3, 1, -2, -4};
+    }
+    if(corners == 12)
+    {
+      //xCorners = {-2, -1, 2, 3, 4, 3, 1, -2, -4, -6, -4};
+      //yCorners = {-3, -5, -6, -4, -1, 2, 4, 3, 1, -2, -4};
+    }
+    
   }
   public void setX(int x) {
     myCenterX = x;
