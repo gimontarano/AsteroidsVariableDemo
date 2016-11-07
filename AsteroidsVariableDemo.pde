@@ -197,7 +197,7 @@ class Asteroids extends Floater
   private void show()
   {
     int hits = (int)(Math.random()*4);
-    int sizeFactor = 3 - hits;
+    int sf = 3 - hits;
     if (hits == 3)
     {
       stroke(0);
@@ -206,18 +206,18 @@ class Asteroids extends Floater
 
     if(corners == 10)
     {
-      xCorners = {-2, -1, 2, 3, 4, 3, 1, -2, -4, -4};
-      yCorners = {-3, -5, -6, -4, -1, 2, 4, 3, 1, -4};
+      xCorners = {-2*sf, -1*sf, 2*sf, 3*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf, -4*sf};
+      yCorners = {-3*sf, -5*sf, -6*sf, -4*sf, -1*sf, 2*sf, 4*sf, 3*sf, 1*sf, -4*sf};
     }
     if(corners == 11)
     {
-      xCorners = {-2, -1, 2, 3, 4, 3, 1, -2, -4, -6, -4};
-      yCorners = {-3, -5, -6, -4, -1, 2, 4, 3, 1, -2, -4};
+      xCorners = {-2*sf, -1*sf, 2*sf, 3*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf, -6*sf, -4*sf};
+      yCorners = {-3*sf, -5*sf, -6*sf, -4*sf, -1*sf, 2*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf};
     }
     if(corners == 12)
     {
-      //xCorners = {-2, -1, 2, 3, 4, 3, 1, -2, -4, -6, -4};
-      //yCorners = {-3, -5, -6, -4, -1, 2, 4, 3, 1, -2, -4};
+      xCorners = {-2*sf, -2*sf, -1*sf, 2*sf, 3*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf, -6*sf, -4*sf};
+      yCorners = {-3*sf, -4*sf, -5*sf, -6*sf, -4*sf, -1*sf, 2*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf};
     }
     
   }
