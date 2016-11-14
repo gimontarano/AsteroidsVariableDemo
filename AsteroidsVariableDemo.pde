@@ -186,7 +186,8 @@ class Asteroids extends Floater
 {
   public Asteroids() {
     show();
-    corners = (int)(Math.random()*3) + 10;
+    //corners = (int)(Math.random()*3) + 10;
+    corners = 0;
     myColor = color(255);
     myCenterX = (Math.random()*510) - 5;
     myCenterY = (Math.random()*510) - 5; 
@@ -196,15 +197,17 @@ class Asteroids extends Floater
   }
   private void show()
   {
-    int hits = (int)(Math.random()*4);
+    int hits = (int)(Math.random()*2);
     int sf = 3 - hits;
+    //asteroids
+    ellipse((int)(myCenterX), (int)(myCenterY), 5 * sf, 5 * sf);
+    //hit 3 times
     if (hits == 3)
     {
       stroke(0);
       point(0, 0);
     }
-
-    if(corners == 10)
+    /*if(corners == 10)
     {
       xCorners = {-2*sf, -1*sf, 2*sf, 3*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf, -4*sf};
       yCorners = {-3*sf, -5*sf, -6*sf, -4*sf, -1*sf, 2*sf, 4*sf, 3*sf, 1*sf, -4*sf};
@@ -218,7 +221,7 @@ class Asteroids extends Floater
     {
       xCorners = {-2*sf, -2*sf, -1*sf, 2*sf, 3*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf, -6*sf, -4*sf};
       yCorners = {-3*sf, -4*sf, -5*sf, -6*sf, -4*sf, -1*sf, 2*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf};
-    }
+    }*/
     
   }
   public void setX(int x) {
