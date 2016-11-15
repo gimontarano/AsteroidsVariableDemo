@@ -101,7 +101,7 @@ abstract class Floater
     myDirectionX += ((dAmount) * Math.cos(dRadians));
     myDirectionY += ((dAmount) * Math.sin(dRadians));
   }
-  void rotate (int nDegreesOfRotation)
+  public void rotate (int nDegreesOfRotation)
   {  
     //rotates the floater by a given number of degrees
     myPointDirection+=nDegreesOfRotation;
