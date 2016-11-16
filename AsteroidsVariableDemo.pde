@@ -1,6 +1,7 @@
 
 Spaceship bob;
 Stars stars;
+Asteroids ast;
 boolean isAccelerating = false;
 boolean isRotatingLeft = false;
 boolean isRotatingRight = false;
@@ -10,6 +11,7 @@ int countDown = 60;
 void setup()
 {
   size(500,500);
+  ast = new Asteroids();
   bob = new Spaceship();
   stars = new Stars();
   textSize(24);
@@ -36,6 +38,7 @@ void draw()
   stars.show();
   bob.show(isHyperspace,countDown,isAccelerating);
   bob.move();
+  ast.show();
   if(isAccelerating == true)bob.accelerate(.1);
   if(isRotatingLeft == true)bob.rotate(-5);
   if(isRotatingRight == true)bob.rotate(5);
@@ -45,6 +48,8 @@ void draw()
   text("myPointDirection: "+ bob.getPointDirection(),10,60);
   text("myDirectionX: "+ (int)(bob.getDirectionX()*100)/100.0,10,80);
   text("myDirectionY: "+ (int)(bob.getDirectionY()*100)/100.0,10,100);
+
+  System.out.println(ast.getPointDirection());
 }
 void keyPressed()
 {
@@ -184,20 +189,22 @@ abstract class Floater
 
 class Asteroids extends Floater
 {
+  int hits;
   public Asteroids() {
     show();
+    move();
     //corners = (int)(Math.random()*3) + 10;
     corners = 0;
     myColor = color(255);
     myCenterX = (Math.random()*510) - 5;
     myCenterY = (Math.random()*510) - 5; 
     myDirectionX = myDirectionY = 0;
-    myPointDirection = 0;
+    hits = (int)(Math.random()*2);
 
   }
-  private void show()
+  public void show()
   {
-    int hits = (int)(Math.random()*2);
+    
     int sf = 3 - hits;
     //asteroids
     ellipse((int)(myCenterX), (int)(myCenterY), 5 * sf, 5 * sf);
@@ -222,6 +229,25 @@ class Asteroids extends Floater
       xCorners = {-2*sf, -2*sf, -1*sf, 2*sf, 3*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf, -6*sf, -4*sf};
       yCorners = {-3*sf, -4*sf, -5*sf, -6*sf, -4*sf, -1*sf, 2*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf};
     }*/
+  }
+  public void move()
+  {
+    
+    if(myCenterY < 250)
+    {
+      myPointDirection = Math.atan((myCenterY - 250)/(myCenterX - 250));
+    }
+    if(myCenterY > 250)
+    {
+      myPointDirection = (Math.atan((myCenterY - 250)/(myCenterX - 250))) + PI;
+    }
+    /*
+    double dRadians =myPointDirection*(Math.PI/180);
+
+    //change coordinates of direction of travel
+    myDirectionX += ((dAmount) * Math.cos(dRadians));
+    myDirectionY += ((dAmount) * Math.sin(dRadians));
+    */
     
   }
   public void setX(int x) {
