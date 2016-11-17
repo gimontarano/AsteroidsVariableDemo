@@ -241,13 +241,11 @@ class Asteroids extends Floater
     {
       myPointDirection = (Math.atan((myCenterY - 250)/(myCenterX - 250))) + PI;
     }
-    /*
     double dRadians =myPointDirection*(Math.PI/180);
 
     //change coordinates of direction of travel
-    myDirectionX += ((dAmount) * Math.cos(dRadians));
-    myDirectionY += ((dAmount) * Math.sin(dRadians));
-    */
+    myDirectionX += ((30) * Math.cos(dRadians));
+    myDirectionY += ((30) * Math.sin(dRadians));
     
   }
   public void setX(int x) {
