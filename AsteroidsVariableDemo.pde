@@ -1,22 +1,21 @@
 
 Spaceship bob;
 Stars stars;
-Asteroids ast;
 boolean isAccelerating = false;
 boolean isRotatingLeft = false;
 boolean isRotatingRight = false;
 boolean isHyperspace = false;
 
 int countDown = 60;
-void setup()
+public void setup()
 {
   size(500,500);
-  ast = new Asteroids();
+  Asteroids [] ast = new Asteroids[100];
   bob = new Spaceship();
   stars = new Stars();
   textSize(24);
 }
-void draw()
+public void draw()
 {
   if(!isHyperspace)
   {
@@ -38,7 +37,12 @@ void draw()
   stars.show();
   bob.show(isHyperspace,countDown,isAccelerating);
   bob.move();
-  ast.show();
+  for(int i = 0; i < ast.length; i++)
+  {
+    //ast[i].show();
+    //ast[i].move();
+  }
+  
   if(isAccelerating == true)bob.accelerate(.1);
   if(isRotatingLeft == true)bob.rotate(-5);
   if(isRotatingRight == true)bob.rotate(5);
@@ -48,8 +52,6 @@ void draw()
   text("myPointDirection: "+ bob.getPointDirection(),10,60);
   text("myDirectionX: "+ (int)(bob.getDirectionX()*100)/100.0,10,80);
   text("myDirectionY: "+ (int)(bob.getDirectionY()*100)/100.0,10,100);
-
-  System.out.println(ast.getPointDirection());
 }
 void keyPressed()
 {
@@ -192,7 +194,6 @@ class Asteroids extends Floater
   int hits;
   public Asteroids() {
     show();
-    move();
     //corners = (int)(Math.random()*3) + 10;
     corners = 0;
     myColor = color(255);
@@ -200,6 +201,14 @@ class Asteroids extends Floater
     myCenterY = (Math.random()*510) - 5; 
     myDirectionX = myDirectionY = 0;
     hits = (int)(Math.random()*2);
+    if(myCenterY < 250)
+    {
+      myPointDirection = Math.atan((myCenterY - 250)/(myCenterX - 250));
+    }
+    if(myCenterY > 250)
+    {
+      myPointDirection = (Math.atan((myCenterY - 250)/(myCenterX - 250))) + PI;
+    }
 
   }
   public void show()
@@ -232,20 +241,13 @@ class Asteroids extends Floater
   }
   public void move()
   {
-    
-    if(myCenterY < 250)
-    {
-      myPointDirection = Math.atan((myCenterY - 250)/(myCenterX - 250));
-    }
-    if(myCenterY > 250)
-    {
-      myPointDirection = (Math.atan((myCenterY - 250)/(myCenterX - 250))) + PI;
-    }
-    double dRadians =myPointDirection*(Math.PI/180);
+    double dRadians = myPointDirection;
 
     //change coordinates of direction of travel
-    myDirectionX += ((30) * Math.cos(dRadians));
-    myDirectionY += ((30) * Math.sin(dRadians));
+    myDirectionX = (0.5 * Math.cos(dRadians));
+    myDirectionY = (0.5 * Math.sin(dRadians));
+    myCenterX += myDirectionX;
+    myCenterY += myDirectionY;
     
   }
   public void setX(int x) {
