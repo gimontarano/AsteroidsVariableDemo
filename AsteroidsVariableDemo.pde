@@ -1,6 +1,7 @@
 
 Spaceship bob;
 Stars stars;
+Asteroids [] ast = new Asteroids[100];
 boolean isAccelerating = false;
 boolean isRotatingLeft = false;
 boolean isRotatingRight = false;
@@ -10,7 +11,10 @@ int countDown = 60;
 public void setup()
 {
   size(500,500);
-  Asteroids [] ast = new Asteroids[100];
+  for(int i = 0; i < ast.length; i++)
+  {
+    ast[i] = new Asteroids();
+  }
   bob = new Spaceship();
   stars = new Stars();
   textSize(24);
@@ -39,8 +43,8 @@ public void draw()
   bob.move();
   for(int i = 0; i < ast.length; i++)
   {
-    //ast[i].show();
-    //ast[i].move();
+    ast[i].show();
+    ast[i].move();
   }
   
   if(isAccelerating == true)bob.accelerate(.1);
