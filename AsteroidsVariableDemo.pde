@@ -11,6 +11,11 @@ int countDown = 60;
 public void setup()
 {
   size(500,500);
+  ArrayList <Asteroids> astList = new ArrayList <Asteroids>();
+  for(int i = 0; i < 101; i++)
+  {
+    astList.add(new Asteroids());
+  }
   for(int i = 0; i < ast.length; i++)
   {
     ast[i] = new Asteroids();
@@ -341,9 +346,7 @@ class Spaceship extends Floater
   private int intY;
   Bullets()
   {
-    corners = 2;
-    xCorners = new int[corners];
-    yCorners = new int[corners];
+    corners = 1;
     myCenterX = 250;
     intX = (int)(myCenterX);
     myCenterY = 250;
@@ -351,10 +354,8 @@ class Spaceship extends Floater
     myDirectionX = 0;
     myDirectionY = 0;
     myPointDirection = 0;
-    xCorners[0] = intX;
-    yCorners[0] = intY;
-    xCorners[1] = intX + (int)(Math.cos(myPointDirection)*5);
-    yCorners[1] = intY + (int)(Math.sin(myPointDirection)*5);
+    xCorners = intX;
+    yCorners = intY;
     myColor = color(255,255,255);
     
   }
