@@ -1,24 +1,19 @@
 
 Spaceship bob;
 Stars stars;
-Asteroids [] ast = new Asteroids[100];
 boolean isAccelerating = false;
 boolean isRotatingLeft = false;
 boolean isRotatingRight = false;
 boolean isHyperspace = false;
+ArrayList <Asteroids> astList = new ArrayList <Asteroids>();
 
 int countDown = 60;
 public void setup()
 {
   size(500,500);
-  ArrayList <Asteroids> astList = new ArrayList <Asteroids>();
   for(int i = 0; i < 101; i++)
   {
     astList.add(new Asteroids());
-  }
-  for(int i = 0; i < ast.length; i++)
-  {
-    ast[i] = new Asteroids();
   }
   bob = new Spaceship();
   stars = new Stars();
@@ -46,10 +41,10 @@ public void draw()
   stars.show();
   bob.show(isHyperspace,countDown,isAccelerating);
   bob.move();
-  for(int i = 0; i < ast.length; i++)
+  for(int i = 0; i < astList.size(); i++)
   {
-    ast[i].show();
-    ast[i].move();
+    astList.get(i).show();
+    astList.get(i).move();
   }
   
   if(isAccelerating == true)bob.accelerate(.1);
@@ -232,21 +227,6 @@ class Asteroids extends Floater
       stroke(0);
       point(0, 0);
     }
-    /*if(corners == 10)
-    {
-      xCorners = {-2*sf, -1*sf, 2*sf, 3*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf, -4*sf};
-      yCorners = {-3*sf, -5*sf, -6*sf, -4*sf, -1*sf, 2*sf, 4*sf, 3*sf, 1*sf, -4*sf};
-    }
-    if(corners == 11)
-    {
-      xCorners = {-2*sf, -1*sf, 2*sf, 3*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf, -6*sf, -4*sf};
-      yCorners = {-3*sf, -5*sf, -6*sf, -4*sf, -1*sf, 2*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf};
-    }
-    if(corners == 12)
-    {
-      xCorners = {-2*sf, -2*sf, -1*sf, 2*sf, 3*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf, -6*sf, -4*sf};
-      yCorners = {-3*sf, -4*sf, -5*sf, -6*sf, -4*sf, -1*sf, 2*sf, 4*sf, 3*sf, 1*sf, -2*sf, -4*sf};
-    }*/
   }
   public void move()
   {
