@@ -1,4 +1,3 @@
-
 Spaceship bob;
 Stars stars;
 boolean isAccelerating = false;
@@ -14,7 +13,7 @@ public void setup()
   for(int i = 0; i < 101; i++)
   {
     astList.add(new Asteroids());
-  }
+  } 
   bob = new Spaceship();
   stars = new Stars();
   textSize(24);
@@ -317,100 +316,6 @@ class Spaceship extends Floater
   }
   public double getPointDirection() {
     return myPointDirection;
-  }
-}
-
-/*class Bullets extends Floater
-{
-  private int intX;
-  private int intY;
-  Bullets()
-  {
-    corners = 1;
-    myCenterX = 250;
-    intX = (int)(myCenterX);
-    myCenterY = 250;
-    intY = (int)(myCenterY);
-    myDirectionX = 0;
-    myDirectionY = 0;
-    myPointDirection = 0;
-    xCorners = intX;
-    yCorners = intY;
-    myColor = color(255,255,255);
-    
-  }
-  public void setX(int x)
-  {
-    myCenterX = x;
-  }
-  public int getX()
-  {
-    return (int) myCenterX;
-  }
-  public void setY(int y)
-  {
-    myCenterY = y;
-  }
-  public int getY()
-  {
-    return (int) myCenterY;
-  }
-  public void setDirectionX(double x)
-  {
-    myDirectionX = x;
-  }
-  public double getDirectionX()
-  {
-    return myDirectionX;
-  }
-  public void setDirectionY(double y)
-  {
-    myDirectionY = y;
-  }
-  public double getDirectionY()
-  {
-    return myDirectionY;
-  }
-  public void setPointDirection(int degrees)
-  {
-    myPointDirection = degrees;
-  }
-  public double getPointDirection()
-  {
-    return myPointDirection;
-  }
-}*/
-
-class Stars
-{
-  int x[];
-  int y[];
-  int s[];
-  int c[];
-  Stars()
-  {
-    x = new int[200];
-    y = new int[200];
-    s = new int[200];
-    c = new int[200];
-    for(int i = 0; i< 200; i++)
-    {
-      x[i] = (int)(Math.random() * width);
-      y[i] = (int)(Math.random() * width);
-      s[i] = (int)(Math.random() * 5) + 1;
-      c[i] = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
-    }
-  }
-  void show()
-  {
-    
-    for(int i = 0; i< 200; i++)
-    {
-      stroke(c[i]);
-      strokeWeight(s[i]);
-      point(x[i],y[i]);
-    }
-    strokeWeight(1);
   }
 }
     
