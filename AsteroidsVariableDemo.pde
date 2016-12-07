@@ -5,6 +5,11 @@ boolean isRotatingLeft = false;
 boolean isRotatingRight = false;
 boolean isHyperspace = false;
 ArrayList <Asteroids> astList = new ArrayList <Asteroids>();
+ArrayList <Bullets> bulList = new ArrayList <Bullets>();
+int exesA;
+int whysA;
+int exesS;
+int whysS;
 
 int countDown = 60;
 public void setup()
@@ -40,12 +45,24 @@ public void draw()
   stars.show();
   bob.show(isHyperspace,countDown,isAccelerating);
   bob.move();
+  
   for(int i = 0; i < astList.size(); i++)
   {
+    exesS = Spaceship.getX();
+    whysS = Spaceship.getY();
     astList.get(i).show();
     astList.get(i).move();
+    exesA = astList.get(i).getX();
+    whysA = astList.get(i).getY();
+    if(dist(exesA, whysA, exesS, whysS) < 10)
+    {
+      astList.remove(i);
+    }
   }
+
   
+  
+
   if(isAccelerating == true)bob.accelerate(.1);
   if(isRotatingLeft == true)bob.rotate(-5);
   if(isRotatingRight == true)bob.rotate(5);
@@ -318,5 +335,37 @@ class Spaceship extends Floater
     return myPointDirection;
   }
 }
+class Stars
+{
+  int x[];
+  int y[];
+  int s[];
+  int c[];
+  Stars()
+  {
+    x = new int[200];
+    y = new int[200];
+    s = new int[200];
+    c = new int[200];
+    for(int i = 0; i< 200; i++)
+    {
+      x[i] = (int)(Math.random() * width);
+      y[i] = (int)(Math.random() * width);
+      s[i] = (int)(Math.random() * 5) + 1;
+      c[i] = color((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
+    }
+  }
+  void show()
+  {
     
+    for(int i = 0; i< 200; i++)
+    {
+      stroke(c[i]);
+      strokeWeight(s[i]);
+      point(x[i],y[i]);
+    }
+    strokeWeight(1);
+  }
+}
+
 

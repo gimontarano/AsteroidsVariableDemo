@@ -12,8 +12,6 @@ class Bullets extends Floater
     myDirectionX = 0;
     myDirectionY = 0;
     myPointDirection = 0;
-    xCorners = intX;
-    yCorners = intY;
     myColor = color(255,255,255);
     
   }
@@ -57,3 +55,4 @@ class Bullets extends Floater
   {
     return myPointDirection;
   }
+}
